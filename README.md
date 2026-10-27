@@ -1,4 +1,32 @@
+
 # Pastebin Lite
+
+A lightweight Pastebin-like web application built with Next.js, TypeScript, and Upstash Redis. Create text pastes and share them through unique URLs, with optional expiration times and view limits.
+
+**Live Demo:** https://pastebin-lite-rgz7.vercel.app
+**GitHub Repository:** https://github.com/gayathri031024-cmyk/pastebin-lite
+
+## Features
+
+* Create text pastes and generate shareable links.
+* Set optional expiration times and maximum view counts.
+* Persist paste data in Upstash Redis.
+* Enforce view limits atomically to handle concurrent requests.
+* Render paste content safely as escaped text.
+* Validate API input and return appropriate HTTP status codes.
+* Support deterministic expiration testing through `TEST_MODE`.
+* Include automated integration and unit tests.
+
+## API Overview
+
+| Method | Endpoint          | Description                                           |
+| ------ | ----------------- | ----------------------------------------------------- |
+| `GET`  | `/api/healthz`    | Checks Redis connectivity.                            |
+| `POST` | `/api/pastes`     | Creates a paste and returns its ID and share URL.     |
+| `GET`  | `/api/pastes/:id` | Retrieves paste content and its remaining view count. |
+| `GET`  | `/p/:id`          | Displays a paste in the browser.                      |
+
+Pastes can become unavailable when their expiration time passes or their view limit is exhausted.
 
 A small Pastebin-like web app. Create a text paste, get a shareable link, and view it until it expires (time limit) or runs out of views (view limit).
 
